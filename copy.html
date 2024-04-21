@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Themed Site</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 100px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        input[type="text"] {
+            width: calc(100% - 100px);
+            padding: 10px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            font-size: 16px;
+            color: #333333;
+        }
+        input[type="submit"] {
+            width: 100px;
+            padding: 10px;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Dark Themed Site</h2>
+        <form id="form">
+            <input type="text" id="link" placeholder="Enter link...">
+            <input type="submit" value="Copy Link">
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var link = document.getElementById('link').value.trim();
+            if (link !== '') {
+                var viewSourceLink = 'view-source:' + link + '&container=ig';
+                navigator.clipboard.writeText(viewSourceLink)
+                    .then(function() {
+                        alert('View source link with container copied to clipboard: ' + viewSourceLink);
+                    })
+                    .catch(function(error) {
+                        alert('Failed to copy view source link with container: ' + error);
+                    });
+            }
+        });
+    </script>
+</body>
+</html>
